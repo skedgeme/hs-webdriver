@@ -131,7 +131,7 @@ getCaps = doSessCommand methodGet "" Null
 -- |Close the current session and the browser associated with it.
 closeSession :: WebDriver wd => wd ()
 closeSession = do s@WDSession {..} <- getSession
-                  noReturn $ doSessCommand methodDelete "" Null
+                  ignoreReturn $ doSessCommand methodDelete "" Null
                   putSession s { wdSessId = Nothing }
 
 
